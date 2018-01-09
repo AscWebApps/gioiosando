@@ -2,10 +2,15 @@
 <br>
 <div class="row">
   <div class="col-md-12">
-<div class="jumbotron">
-  <h1 class="display-4">Gioiosando</h1>
-  <p class="lead">Il primo smart social network. <br><strong>[Progetto in fase di sviluppo]</strong></p>
-  <hr class="my-4">
+    <div class="jumbotron">
+      <%if  user_signed_in? %>
+      <p class="text-center">
+        <%= gravatar_for current_user %>
+      </p>
+      <p class="text-center">Ciao <strong><%= current_user.email%></strong> benvenuto in</p>
+    <%end%>
+    <h1 class="display-4 text-center">Gioiosando</h1>
+    <hr class="my-4">
   <p>Progetto #smartcity in ambito digitale creato da <a href="https://www.ascwebapps.com">ASC Web Apps</a> in collaborazione con <a href="http://www.smartgioiosa.it">Smart Gioiosa</a> e la comunità di sviluppo web <a href="http://www.sicilyonrails.org">Sicily on Rails</a></p>
   <p class="lead">
     <a class="btn btn-primary btn-lg" href="http://www.smartgioiosa.it/smart-blog/gioiosando-usare-la-tecnologia-in-modo-smart" role="button">Learn more</a>
@@ -14,6 +19,9 @@
   <p><a href="https://www.youtube.com/channel/UCMzKGOw5AwguXigbKpgY7Ow/videos">Canale YouTube delle lezioni</a></p>
   <p><a href="http://webprogramming.smartgioiosa.it/">Portale di programmazione Web</a> (In fase di aggiornamento)</p>
   <p><a href="https://github.com/AscWebApps/gioiosando">Codice del progetto su Github</a></p>
+  <hr>
+  <p class="lead">Il primo smart social network. <br><strong>[Progetto in fase di sviluppo]</strong></p>
+
 
 </div>
 
