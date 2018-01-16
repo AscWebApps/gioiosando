@@ -1,0 +1,21 @@
+
+<br>
+<div class="row">
+  
+  <div class="col-md-4">
+    <%= gravatar_for @user%><br>
+    <%= link_to "Following", "#" %> <span class="badge badge-light">0</span> | 
+    <%= link_to "Follower", "#"%> <span class="badge badge-light">0</span>
+    <%= @user.email %>
+    <br>
+    <br> 
+
+    <%= link_to "Modifica account", edit_user_registration_path%>
+    
+    <hr>
+  </div>
+
+  <div class="col-md-8">
+    <h1>I miei posts</h1>
+  </div>
+</div>
