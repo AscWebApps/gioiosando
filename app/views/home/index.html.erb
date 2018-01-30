@@ -8,7 +8,7 @@
         <%= gravatar_for current_user %>
       </p>
       <%if current_user.name%>
-        <p class="text-center">Ciao <strong><%= current_user.name%></strong> benvenuto in</p> 
+        <p class="text-center">Ciao <strong><%= current_user.name%> <%= current_user.last_name%></strong> benvenuto in</p> 
       <%else%>
         <p class="text-center">Ciao <strong><%= current_user.email%></strong> benvenuto in</p>
       <%end%>
