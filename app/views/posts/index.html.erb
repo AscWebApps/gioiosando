@@ -6,6 +6,7 @@
       <th scope="col">#</th>
       <th scope="col">TTITLE</th>
       <th scope="col">BODY</th>
+      <th scope="col">AUTHOR<th>
       <th scope="col"></th>
       <th scope="col"></th>
       <th scope="col"></th>
@@ -18,6 +19,7 @@
       <th scope="row"><%= post.id%></th>
       <td><%=post.title%></td>
       <td><%= post.body%></td>
+      <td><%= post.user.last_name%></td>
       <td><%= link_to fa_icon("eye"), post_path(post)%></td>
       <td><%= link_to fa_icon("pencil"), edit_post_path(post)%></td>
       <td><%= link_to fa_icon("trash"), post_path(post), method: :delete, data: {confirm: "Sei sicuro di voler eleimiare il post?"}%></td>
