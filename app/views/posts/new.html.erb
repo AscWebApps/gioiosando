@@ -22,6 +22,17 @@
     <%= f.text_area :body, class: "form-control"%>
   </div>
 
+  <h4 class="my-4">Categories</h4>
+  
+  <%= hidden_field_tag "post[category_ids][]", nil %>
+    <% for category in Category.all %>
+      <div class="checkbox">
+        <%= check_box_tag "post[category_ids][]", category.id, @post.categories.include?(category) %>
+        <%= category.name %>
+      </div>
+    <% end %>
+
+    <hr>
   <div class="form-group">
       <%= f.submit%>
     </div>
