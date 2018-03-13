@@ -1,11 +1,14 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Giosando</title>
+       
+    <title><%= full_title yield(:title)%></title>
+    <meta name="description" content= "<%=meta_descriptions yield(:description)%>">
+        
     <%= csrf_meta_tags %>
-
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
     <!-- Global site tag (gtag.js) - Google Analytics -->
@@ -17,6 +20,22 @@
 
     gtag('config', 'UA-21109060-23');
   </script>
+
+
+    <!-- Open Graph Facebook -->
+  <%if controller.controller_name=="posts"%> 
+    <meta property="og:url"                content="<%= request.original_url%>" />
+    <meta property="og:type"               content="article" />
+    <meta property="og:title"              content="<%= yield(:title)%>" />
+    <meta property="og:description"        content="<%= yield(:description)%>" />
+    <meta property="og:image"              content="<%= asset_url ("/assets/gioiosando.jpg")%>" />
+  <%else%> 
+    <meta property="og:url"                content="<%= request.original_url%>"/>
+    <meta property="og:type"               content="article" />
+    <meta property="og:title"              content="<%= full_title yield(:title)%>" />
+    <meta property="og:description"        content="<%= meta_descriptions yield(:description)%>" />
+    <meta property="og:image"              content="<%= asset_url ("/assets/gioiosando.jpg")%>" />
+  <%end%>
 
 
   </head>

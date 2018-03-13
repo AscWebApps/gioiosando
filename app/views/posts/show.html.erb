@@ -1,5 +1,20 @@
+<%= content_for :title, @post.title + @post.meta_title%>
+<%= content_for :description, @post.meta_description%>
+<!--
+<#%= content_for :image, @post.image_preview.url%>
+-->
+
+<br>
+
 <p><%= @post.title%></p>
 <p><%= @post.body%></p>
+
+
+<div id="shareBtn"><a href=""><i class="fa fa-facebook" aria-hidden="true"></div></i></a>
+
+
+<hr>
+
 
 <h4>commenti </h4>
 
@@ -9,9 +24,23 @@
 
 
 
+
+
 <%= form_for [@post, @comment] do |f|%> 
   <%= f.label :body%>
   <%= f.text_area :body%>
   <br>
   <%= f.submit%>
 <%end%>
+
+
+
+<script>
+document.getElementById('shareBtn').onclick = function() {
+  FB.ui({
+    method: 'share',
+    display: 'popup',
+    href: '<%= request.url%>',
+    }, function(response){});
+}
+</script>

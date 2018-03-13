@@ -22,6 +22,20 @@
     <%= f.text_area :body, class: "form-control"%>
   </div>
 
+
+  
+
+    <div class="form-group">
+    <%= f.label :meta_title  %>
+    <%= f.text_field :meta_title, class: "form-control"%>
+   </div>
+
+  <div class="form-group">
+    <%= f.label :meta_description%>
+    <%= f.text_field :meta_description, class: "form-control"%>
+  </div>
+
+
   <h4 class="my-4">Categories</h4>
   
   <%= hidden_field_tag "post[category_ids][]", nil %>
