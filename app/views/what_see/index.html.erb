@@ -1,0 +1,49 @@
+<style>
+  #map {
+    height: 400px;
+    width: 100%;
+  }
+</style>
+
+  <div class="col-md-12">
+    <h2><span>Cosa Vedere a Gioiosa Marea <h2>
+    
+
+
+    <div id="map"></div>
+  </div>
+<script>
+  function initMap() {
+    var gioiosa_marea = {lat: 38.174556, lng: 14.895417};
+    var map = new google.maps.Map(document.getElementById('map'), {
+      zoom: 16,
+      center: gioiosa_marea
+    });
+
+    <%@points.each do |poi|%>
+      <%if poi[:latitude].present?%>
+        var latLng = {lat: <%=poi[:latitude]%>, lng: <%=poi[:longitude]%>};
+        var marker = new google.maps.Marker({
+          position: latLng,
+          map: map
+        });
+
+        var content = "<%= poi[:name]%>";
+        var infowindow = new google.maps.InfoWindow();
+
+
+        google.maps.event.addListener(marker,'click', (function(marker,content,infowindow){
+        return function() {
+           infowindow.setContent(content);
+           infowindow.open(map,marker);
+        };
+        })(marker,content,infowindow));
+
+
+      <%end%>
+    <%end%>
+    }
+</script>
+  <script async defer
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDi1llQEL98mof5OiynESOraX2piDuo_EM&callback=initMap">
+    </script>

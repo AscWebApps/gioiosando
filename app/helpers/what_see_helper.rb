@@ -1,0 +1,2 @@
+module WhatSeeHelper
+end
