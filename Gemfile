@@ -62,3 +62,4 @@ gem "font-awesome-rails"
 gem 'devise'
 gem 'omniauth-facebook'
 gem 'httparty'
+gem 'geocoder'

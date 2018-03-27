@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
-  get 'what_see/index'
 
+  resources :structures
   devise_for :users , controllers: { omniauth_callbacks: 'users/omniauth_callbacks'}  
   
   get 'posts/index'
@@ -14,6 +14,8 @@ Rails.application.routes.draw do
   get 'home/index'
 
   get 'account/index'
+
+  get 'what_see/index'
   
   root "home#index"
 

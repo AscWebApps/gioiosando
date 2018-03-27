@@ -1,0 +1,120 @@
+<style>
+  #map {
+    height: 400px;
+    width: 100%;
+  }
+</style>
+
+
+<br>
+
+
+<div class="row">
+  <div class="col-md-7">
+
+<h5><%=@structure.name%> </h5 >
+    <hr class="my-4">
+    
+
+
+
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @structure.name %>
+</p>
+
+<p>
+  <strong>Description:</strong>
+  <%= @structure.description %>
+</p>
+
+<p>
+  <strong>Street:</strong>
+  <%= @structure.street %>
+</p>
+
+<p>
+  <strong>Street number:</strong>
+  <%= @structure.street_number %>
+</p>
+
+<p>
+  <strong>City:</strong>
+  <%= @structure.city %>
+</p>
+
+<p>
+  <strong>Province:</strong>
+  <%= @structure.province %>
+</p>
+
+<p>
+  <strong>Zipcode:</strong>
+  <%= @structure.zipcode %>
+</p>
+
+<p>
+  <strong>Country:</strong>
+  <%= @structure.country %>
+</p>
+
+<p>
+  <strong>Latitude:</strong>
+  <%= @structure.latitude %>
+</p>
+
+<p>
+  <strong>Longitude:</strong>
+  <%= @structure.longitude %>
+</p>
+
+
+
+
+<%= link_to 'Edit', edit_structure_path(@structure) %> |
+<%= link_to 'Back', structures_path %>
+
+</div>
+  
+<div class="col-md-4">
+  
+<h5>Mappa</h5 >
+    <hr class="my-4">
+ <div id="map"></div>
+</div>
+
+</div>
+
+<script>
+  function initMap() {
+    var myLatLng = { lat: <%=@structure.latitude%>, lng: <%=@structure.longitude%>};
+    var map = new google.maps.Map(document.getElementById('map'), {
+      zoom: 16,
+      center: myLatLng 
+    });
+    
+      var marker = new google.maps.Marker({
+      position: myLatLng,
+         map: map
+     });
+
+        var content = "<%= @structure.name%>";
+        var infowindow = new google.maps.InfoWindow();
+
+
+        google.maps.event.addListener(marker,'click', (function(marker,content,infowindow){
+        return function() {
+           infowindow.setContent(content);
+           infowindow.open(map,marker);
+        };
+        })(marker,content,infowindow));
+
+
+    }
+</script>
+  <script async defer
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDi1llQEL98mof5OiynESOraX2piDuo_EM&callback=initMap">
+    </script>
+
