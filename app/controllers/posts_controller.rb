@@ -3,7 +3,7 @@ class PostsController < ApplicationController
 
 
   def index
-    @posts = Post.all
+    @posts = Post.published.order('created_at DESC')
   end
 
   def show
@@ -54,7 +54,7 @@ class PostsController < ApplicationController
    private
   
   def post_params
-    params.require(:post).permit(:title, :body, :meta_title, :meta_description, :user_id, {category_ids:[]})
+    params.require(:post).permit(:title, :body, :published, :meta_title, :meta_description, :user_id, {category_ids:[]})
   end
 
 end
