@@ -1,5 +1,10 @@
 Rails.application.routes.draw do
 
+  namespace :admin do
+   root  to: 'dashboard#index'
+   resources :structures
+  end
+
   resources :structures
   devise_for :users , controllers: { omniauth_callbacks: 'users/omniauth_callbacks'}  
   
