@@ -4,6 +4,14 @@ Rails.application.routes.draw do
    root  to: 'dashboard#index'
    resources :structures
   end
+  
+  namespace :api do
+    namespace :v1 do
+      resources :structures
+      resources :posts
+    end
+  end
+
 
   resources :structures
   devise_for :users , controllers: { omniauth_callbacks: 'users/omniauth_callbacks'}  
