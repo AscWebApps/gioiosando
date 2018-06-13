@@ -9,8 +9,8 @@ class CreateStructures < ActiveRecord::Migration[5.1]
       t.string :province
       t.string :zipcode
       t.string :country
-      t.string :latitude
-      t.string :longitude
+      t.float :latitude
+      t.float :longitude
 
       t.timestamps
     end
