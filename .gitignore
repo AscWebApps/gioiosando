@@ -17,18 +17,22 @@
 !/log/.keep
 !/tmp/.keep
 
+# Ignore uploaded files in development
+/storage/*
+
+
 /node_modules
 /yarn-error.log
 
 .byebug_history
 
+# Ignore master key for decrypting credentials and more.
+/config/master.key
+
 database.yml
 doc/
 /public/assets
-/public/uploads/*
-/config/secrets.yml
 /config/local_env.yml
-/config/initializers/carrierwave.rb
 
 *.swp
 *~
