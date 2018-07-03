@@ -1,1 +1,26 @@
-<h1>Admin::Strutture</h1>
+<h1 class="my-4 text-center text-lg-left">Structures</h1>
+<div class="row text-center text-lg-left">
+  <div class="col-md-12 mb-4">
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th scope="col"> # </th>
+          <th scope="col"> Name</th>
+          <th scope="col"></th>
+          <th scope="col"></th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @structures.each do |structure|%>
+          <tr>
+            <th scope="row"><%= structure.id%></th>
+            <td><%= link_to structure.name, admin_structure_path(structure) %></td>
+            <td class="text-right"><%= link_to fa_icon("pencil") + " Edit", edit_admin_structure_path(structure), class: "btn btn-primary"%></td>
+            <td class="text-right"><%= link_to fa_icon("trash") + " Destroy", admin_structure_path(structure), method: :delete, data: {confirm: "Are you sure?"}, class: "btn btn-danger"%></td>
+          </tr>
+        <%end%>
+      </tbody>
+    </table>      
+  <%= link_to fa_icon("plus") + " New structure", new_admin_structure_path, class: "btn btn-success"%>
+  </div>
+</div>

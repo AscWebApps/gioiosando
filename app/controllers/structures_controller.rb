@@ -15,6 +15,7 @@ class StructuresController < ApplicationController
   # GET /structures/new
   def new
     @structure = Structure.new
+    @structure.build_address
   end
 
   # GET /structures/1/edit
@@ -69,6 +70,6 @@ class StructuresController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def structure_params
-      params.require(:structure).permit(:name, :description, :street, :street_number, :city, :province, :zipcode, :country, :latitude, :longitude)
+      params.require(:structure).permit(:name, :description, address_attributes: [:street, :street_number, :city, :province, :zipcode, :country, :latitude, :longitude, :_destroy])
     end
 end

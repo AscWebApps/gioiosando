@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+  
+  <head>
+    <title>Dashboard - Gioiosando</title>
+    <%= csrf_meta_tags %>
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"> 
+  </head>
+
+  <body>
+    <%= render 'admin/shared/menu'%>
+    <div class="container">      
+      <%= yield%>
+    </div>
+    <%= render 'admin/shared/footer'%>
+  </body>
+
+</html>

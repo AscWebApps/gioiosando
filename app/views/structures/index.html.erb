@@ -24,22 +24,19 @@
       <tr>
         <td><%= structure.name %></td>
         <td><%= structure.description %></td>
-        <td><%= structure.street %></td>
-        <td><%= structure.street_number %></td>
-        <td><%= structure.city %></td>
-        <td><%= structure.province %></td>
-        <td><%= structure.zipcode %></td>
-        <td><%= structure.country %></td>
-        <td><%= structure.latitude %></td>
-        <td><%= structure.longitude %></td>
+        <%if structure.address.present?%>
+          <td><%= structure.address.street %></td>
+          <td><%= structure.address.street_number %></td>
+          <td><%= structure.address.city %></td>
+          <td><%= structure.address.province %></td>
+          <td><%= structure.address.zipcode %></td>
+          <td><%= structure.address.country %></td>
+          <td><%= structure.address.latitude %></td>
+          <td><%= structure.address.longitude %></td>
+        <%end%>
         <td><%= link_to 'Show', structure %></td>
-        <td><%= link_to 'Edit', edit_structure_path(structure) %></td>
-        <td><%= link_to 'Destroy', structure, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>
 </table>
-
 <br>
-
-<%= link_to 'New Structure', new_structure_path %>

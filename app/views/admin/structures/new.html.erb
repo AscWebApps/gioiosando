@@ -1,0 +1,11 @@
+<h1 class="my-4 text-center text-lg-left">New Structure</h1>
+<div class="row">
+  <div class="col-md-12 mb-4">
+    <%= render 'form', structure: @structure%>
+    <hr>
+  </div>
+  
+  <div class="col-md-12 text-center mb-4">
+  <%= link_to fa_icon("home") + ' Structures', admin_structures_path, class: "btn btn-info"%> 
+  </div>
+</div>

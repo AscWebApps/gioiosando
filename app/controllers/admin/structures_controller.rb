@@ -1,5 +1,5 @@
-class Admin::StructuresController < ApplicationController
-before_action :set_structure, only: [:show, :edit, :update, :destroy]
+class Admin::StructuresController < Admin::BaseController
+  before_action :set_structure, only: [:show, :edit, :update, :destroy]
 
   # GET /structures
   # GET /structures.json
@@ -15,6 +15,8 @@ before_action :set_structure, only: [:show, :edit, :update, :destroy]
   # GET /structures/new
   def new
     @structure = Structure.new
+    @structure.build_address
+    @structure.build_seo_tag
   end
 
   # GET /structures/1/edit
@@ -56,7 +58,7 @@ before_action :set_structure, only: [:show, :edit, :update, :destroy]
   def destroy
     @structure.destroy
     respond_to do |format|
-      format.html { redirect_to structures_url, notice: 'Structure was successfully destroyed.' }
+      format.html { redirect_to admin_structures_url, notice: 'Structure was successfully destroyed.' }
       format.json { head :no_content }
     end
   end
@@ -69,7 +71,7 @@ before_action :set_structure, only: [:show, :edit, :update, :destroy]
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def structure_params
-      params.require(:structure).permit(:name, :description, :street, :street_number, :city, :province, :zipcode, :country, :latitude, :longitude)
+      params.require(:structure).permit(:name, :description, address_attributes: [:id, :street, :street_number, :city, :province, :zipcode, :country, :latitude, :longitude, :addressable_type, :addressable_id, :_destroy], seo_tag_attributes: [:id, :tag_title, :tag_description, :seo_polymorphic_type, :seo_polymorphic_id, :_destroy])
     end
-
 end
+

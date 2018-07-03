@@ -1,9 +1,8 @@
 class Structure < ApplicationRecord
-  after_validation :geocode  
-  geocoded_by :full_address
+  validates :name, :description, presence: true
 
-  def full_address
-    [street, street_number, zipcode, city, province, country].compact.join(' ')
-  end
-
-end
+  has_one :address, :as => :addressable, inverse_of: :addressable
+  accepts_nested_attributes_for :address, allow_destroy: true
+  has_one :seo_tag, :as => :seo_polymorphic, inverse_of: :seo_polymorphic
+  accepts_nested_attributes_for :seo_tag, allow_destroy: true
+ end

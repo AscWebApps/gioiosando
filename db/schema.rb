@@ -10,10 +10,26 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180508053835) do
+ActiveRecord::Schema.define(version: 20180615091955) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "addresses", force: :cascade do |t|
+    t.string "street"
+    t.string "street_number"
+    t.string "city"
+    t.string "zipcode"
+    t.string "province"
+    t.string "country"
+    t.float "latitude"
+    t.float "longitude"
+    t.string "addressable_type"
+    t.bigint "addressable_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["addressable_type", "addressable_id"], name: "index_addresses_on_addressable_type_and_addressable_id"
+  end
 
   create_table "categories", force: :cascade do |t|
     t.string "name"
@@ -47,17 +63,19 @@ ActiveRecord::Schema.define(version: 20180508053835) do
     t.boolean "published", default: true
   end
 
+  create_table "seo_tags", force: :cascade do |t|
+    t.string "tag_title"
+    t.string "tag_description"
+    t.string "seo_polymorphic_type"
+    t.bigint "seo_polymorphic_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["seo_polymorphic_type", "seo_polymorphic_id"], name: "index_seo_tags_on_seo_polymorphic_type_and_seo_polymorphic_id"
+  end
+
   create_table "structures", force: :cascade do |t|
     t.string "name"
     t.text "description"
-    t.string "street"
-    t.string "street_number"
-    t.string "city"
-    t.string "province"
-    t.string "zipcode"
-    t.string "country"
-    t.float "latitude"
-    t.float "longitude"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
-
+  devise_for :users , controllers: { omniauth_callbacks: 'users/omniauth_callbacks'}  
+  
   namespace :admin do
    root  to: 'dashboard#index'
    resources :structures
@@ -13,9 +14,7 @@ Rails.application.routes.draw do
   end
 
 
-  resources :structures
-  devise_for :users , controllers: { omniauth_callbacks: 'users/omniauth_callbacks'}  
-  
+    
   get 'posts/index'
 
   get 'posts/show'
@@ -35,6 +34,8 @@ Rails.application.routes.draw do
   resources :posts do
     resources :comments
   end
+  resources :structures, only: [:index, :show]
+
 
 
   

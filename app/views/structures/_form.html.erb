@@ -1,4 +1,5 @@
-<%= form_with(model: structure, local: true) do |form| %>
+<!--<#%= form_with(model: structure, local: true) do |form| %>-->
+  <%= simple_form_for structure do |form|%>
   <% if structure.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(structure.errors.count, "error") %> prohibited this structure from being saved:</h2>
@@ -12,13 +13,11 @@
   <% end %>
 
   <div class="field">
-    <%= form.label :name %>
-    <%= form.text_field :name, id: :structure_name %>
+    <%= form.input :name%>
   </div>
 
   <div class="field">
-    <%= form.label :description %>
-    <%= form.text_area :description, id: :structure_description %>
+    <%= form.input :description%>
   </div>
 
   
@@ -28,12 +27,12 @@
 
 
   <div id="locationField">
-  <% if @structure.new_record? %>
-    <input id="autocomplete" placeholder="Enter your address"
-             onFocus="geolocate()" type="text" required></input>
+    <% if @structure.new_record? %>
+      <div class="form-group">
+        <input id="autocomplete" placeholder="Enter your address" onFocus="geolocate()" type="text" required class="form-control" ></input>
+      </div>
   <%else%>
-    <input id="autocomplete" placeholder="Enter your address"
-         onFocus="geolocate()" type="text"></input>
+    <input id="autocomplete" placeholder="Enter your address" onFocus="geolocate()" type="text"></input>
   <%end%>
   </div>
   <hr>
@@ -44,26 +43,34 @@
       <tr>
         <td class="label">Street address</td>
         <td class="slimField">
-          <%= form.text_field :street_number, class:"field", id:"street_number", disabled:"true"%></td>
-        <td class="wideField" colspan="2">  <%= form.text_field :street, class:"field", id:"route", disabled:"true"%></td>
+          <%= form.input :street_number, class:"field", id:"street_number", disabled:"true"%>
+        </td>
+        <td class="wideField" colspan="2">  
+          <%= form.input :street, class:"field", id:"route", disabled:"true"%>
+        </td>
       </tr>
       <tr>
         <td class="label">City</td>
-          <td class="wideField" colspan="3"><%= form.text_field :city, class:"field", id:"locality", disabled:"true"%>
+        <td class="wideField" colspan="3">
+          <%= form.input :city, class:"field", id:"locality", disabled:"true"%>
         </td>
       </tr>
       <tr>
         <td class="label">Province</td>
-        <td class="slimField"><%= form.text_field :province, class:"field", id:"administrative_area_level_1", disabled:"true"%>
+        <td class="slimField">
+          <%= form.input :province, class:"field", id:"administrative_area_level_1", disabled:"true"%>
         </td>
 
         <td class="label">Zip code</td>
-        <td class="wideField"><%= form.text_field :zipcode, class:"field", id:"postal_code", disabled:"true"%>
+        <td class="wideField">
+          <%= form.input :zipcode, class:"field", id:"postal_code", disabled:"true"%>
         </td>
       </tr>
       <tr>
         <td class="label">Country</td>
-        <td class="wideField" colspan="3"><%= form.text_field :country, class:"field", id:"country", disabled:"true"%></td>
+        <td class="wideField" colspan="3">
+          <%= form.input :country, class:"field", id:"country", disabled:"true"%>
+        </td>
       </tr>
     </table>
 
@@ -73,7 +80,7 @@
 
 
   <div class="actions">
-    <%= form.submit %>
+    <%= form.button :submit, class: "btn btn-primary" %>
   </div>
 <% end %>
 

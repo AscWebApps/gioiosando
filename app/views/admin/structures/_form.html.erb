@@ -1,0 +1,55 @@
+<%= simple_form_for [:admin, structure] do |form|%>
+   
+  <div class="card mb-4">
+    <h5 class="card-header bg-primary"> Dati azienda: </h5> 
+    <div class="card-body">
+      <%= form.input :name%>
+      <%= form.input :description%>
+    </div>
+  </div>
+
+  <%= form.simple_fields_for :address do |address|%>
+    <div class="card mb-4">
+      <h5 class="card-header bg-primary"> Indirizzo azienda: </h5>
+      <div class="card-body">
+
+        <div class="form-row">
+          <div class="col-md-4">
+            <%= address.input :city%>
+          </div>
+          <div class="col-md-4">
+            <%= address.input :province%>
+          </div>
+          <div class="col-md-4">
+            <%= address.input :country%>
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="col-md-6">
+            <%= address.input :street%>
+          </div>
+          <div class="col-md-3">
+            <%= address.input :street_number%>
+          </div>
+          <div class="col-md-3">
+            <%= address.input :zipcode%>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  <%end%> 
+  
+  <%= form.simple_fields_for :seo_tag do |seo|%>
+    <div class="card mb-4">
+      <h5 class="card-header bg-primary"> Seo: </h5>
+      <div class="card-body">
+        <%= seo.input :tag_title %>
+        <%= seo.input :tag_description%>
+      </div>
+    </div>
+   <%end%>
+  
+  <%= form.button :submit, class:"btn btn-primary"%>
+<%end%>
+
