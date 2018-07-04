@@ -33,6 +33,7 @@ database.yml
 doc/
 /public/assets
 /config/local_env.yml
+/config/secrets.yml
 
 *.swp
 *~
