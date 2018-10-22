@@ -3,9 +3,9 @@
 
 ### Backend:
 
-* Ruby version: 2.4.1
+* Ruby version: 2.5.1
 
-* Rails version: 5.1.4
+* Rails version: 5.2.1
 
 * Database: postgresql
 
